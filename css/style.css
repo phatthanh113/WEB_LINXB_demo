@@ -532,11 +532,11 @@ footer h4 {
 }
 
 .list-c2 .list.image1 {
-    background: url("../images/IMAGE1.png") no-repeat center center / cover;
+    background: url("../images/contact.jpg") no-repeat center center / cover;
 }
 
 .list-c2 .list.image2 {
-    background: url("../images/IMAGE1.png") no-repeat center center / cover;
+    background: url("../images/company.jpg") no-repeat center center / cover;
 }
 
 .list-c2 h4 {
@@ -876,19 +876,19 @@ footer h4 {
 }
 
 .list1.image1 {
-    background: url("../images/IMAGE.png") no-repeat center center / cover;
+    background: url("../images/work1.jpg") no-repeat center center / cover;
 }
 
 .list1.image2 {
-    background: url("../images/IMAGE.png") no-repeat center center / cover;
+    background: url("../images/work2.jpg") no-repeat center center / cover;
 }
 
 .list1.image3 {
-    background: url("../images/IMAGE.png") no-repeat center center / cover;
+    background: url("../images/work3.jpg") no-repeat center center / cover;
 }
 
 .list1.image4 {
-    background: url("../images/IMAGE.png") no-repeat center center / cover;
+    background: url("../images/work4.jpg") no-repeat center center / cover;
 }
 
 .list1 {
@@ -946,6 +946,18 @@ footer h4 {
 
 .list1 h3 .large {
     font-size: 7rem;
+}
+
+@media screen and (max-width:800px) {
+    .list1 h3 .large {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .list1 h3 .large {
+        font-size: 4rem;
+    }
 }
 
 .list1 h3 span:not(.large) {

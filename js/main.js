@@ -255,7 +255,7 @@ $(function() {
             // 現在のスライドを更新
             currentIndex = clickedIndex;
         });
-
+        /*
         // 自動スライドのタイマー
         setInterval(function() {
             var nextIndex = (currentIndex + 1) % slideCount;
@@ -270,6 +270,7 @@ $(function() {
 
             currentIndex = nextIndex;
         }, 4000); // 4秒ごとにスライドを切り替える
+        */
     });
 });
 
