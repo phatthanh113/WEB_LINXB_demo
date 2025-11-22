@@ -6,52 +6,103 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
         <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     </head>
     <body>
     <div id="container">
         <header>
             <h1 id="logo">
-                <a href="index.html"><img src="images/LOGO.png" alt="" /></a>
+                <a href="index.html"><img src="images/LOGO.jpg" alt="" /></a>
             </h1>
-
             <nav>
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
+                    <li class="ddmenu_parent"><a href="#" class="ddmenu">制作実績</a>
+                        <ul style="display: none;">
+                            <li><a href="#">BIM</a></li>
+                            <li><a href="#">RHINO (建築)</a></li>
+                            <li><a href="#">パース</a></li>
+                            <li><a href="#">動画</a></li>
+                        </ul>
+                    </li>
                     <li><a href="company.html">会社概要</a></li>
                     <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </nav>
         </header>
+
         <main style="padding:0px;">
             <section class="space-large">
-                <form>
-                    <h2 class="c"><span class="main-text">お問い合わせ</span><span class="sub-text">Contact</span></h2>
-                    <p>..................................</p>
-                    <p>..................................</p>
-                    <p>..................................</p>
+                <form id="contact-form">
+                    <h2 class="c">
+                        <span class="main-text">お問い合わせ</span>
+                        <span class="sub-text">Contact</span>
+                    </h2>
+                    <p>ご相談、ご質問、その他何かございましたら下記フォームよりご連絡ください。</p>
+                    <p>採用エントリーにつきましても下記フォームより受付けております。</p>
+                    <p>
+                        2～4営業日以内に弊社担当よりご連絡差し上げます。（お問い合わせ内容によっては、ご返信できかねる場合もございますのでご了承ください）
+                        土日祝日、長期休暇（年末年始・夏季など）の当社休業日にいただきましたお問い合わせに関しましては、翌営業日以降でのご返信とさせていただきます。
+                    </p>
+                    <p>※営業を目的としたお問い合わせは一切お断りしております。受信した場合もご返信致しかねますのでご了承ください。</p>
                     <table class="ta1">
                         <tr>
-                            <th><b>会社名</b></th>
+                            <th><b>お問い合わせ種別</b><span class="required">必須</span></th>
                             <td>
-                                <input type="text" name="会社名" size="30" class="ws" />
+                                <select name="inquiry_type" class="ws" aria-required="true" aria-invalid="false">
+                                    <option value="">以下から選択して下さい</option>
+                                    <option value="ご質問・ご相談">ご質問・ご相談</option>
+                                    <option value="採用エントリー">採用エントリー</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
-                            <th><b>代表者名</b></th>
+                            <th><b>お名前</b><span class="required">必須</span></th>
                             <td>
-                                <input type="text" name="代表者名" size="30" class="ws" />
+                                <input type="text" name="from_name" size="30" class="ws" required placeholder="例：山田 太郎" />
                             </td>
                         </tr>
                         <tr>
-                            <th><b>お問い合わせ詳細</b></th>
+                            <th><b>フリガナ</b></th>
                             <td>
-                                <textarea name="お問い合わせ詳細" cols="30" rows="10" class="wl"></textarea>
+                                <input type="text" name="company_name" size="30" class="ws" placeholder="例：ヤマダ タロウ" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th><b>メールアドレス</b><span class="required">必須</span></th>
+                            <td>
+                                <input type="email" name="reply_to" size="30" class="ws" required placeholder="例：example@linxb.com" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>電話番号</b><span class="required">必須</span></th>
+                            <td>
+                                <input type="tel" name="phone" size="30" class="ws" required placeholder="例：090-1234-5678" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>お問い合わせ内容</b><span class="required">必須</span></th>
+                            <td>
+                                <textarea name="message" cols="30" rows="10" class="wl" required placeholder="お問い合わせ内容をご記入ください"></textarea>
                             </td>
                         </tr>
                     </table>
+                    </table>
+
+                    <div style="margin: 30px 0; text-align: center;">
+                        <p style="margin-bottom: 15px;"><input type="checkbox" required style="width: 18px; height: 18px; margin-right: 8px;">   入力内容をご確認の上、チェックボックスにチェックを入れ「送信する」ボタンを押してください。</p>
+                        <div style="font-size: 0.85em; color: #666; margin-bottom: 20px; text-align: left; display: inline-block;">
+                            <div>※チェックを入れたままEnterを押すと送信されますのでご注意ください。</div>
+                            <div>※送信ボタンを押したあとに画面が切替わらない場合、送信されていない可能性がございますので再度入力内容をご確認ください。</div>
+                        </div>
+                        <br>
+                    </div>
+
                     <p class="c">
-                        <input type="submit" value="内容を確認する" />
+                        <button type="submit" id="submit-btn" style="padding: 10px 40px; cursor: pointer">送信する</button>
                     </p>
+                    <div id="response-message"></div>
                 </form>
             </section>
         </main>
@@ -60,7 +111,7 @@
             <div class="text">
                 <div>
                     <h4>Company</h4>
-                    <p>LINX-B<br />。。。。。。。。<br />。。。。。。。。<br />FAX:</p>
+                    <p>LINX-B株式会社<br>住所:<br>電話番号:<br>FAX:</p>
                 </div>
                 <div>
                     <h4>Follow Us</h4>
@@ -81,7 +132,7 @@
                 </div>
             </div>
             <div class="image">
-                <p class="logo"><img src="images/LOGO.png" alt="" /></p>
+                <p class="logo"><img src="images/LOGO.jpg" alt="" /></p>
                 <small>&copy; sitename</small>
             </div>
         </footer>
@@ -96,6 +147,14 @@
         <nav>
             <ul>
                 <li><a href="index.html">ホーム</a></li>
+                <li class="ddmenu_parent"><a href="#" class="ddmenu">制作実績</a>
+                    <ul style="display: none;">
+                        <li><a href="#">BIM</a></li>
+                        <li><a href="#">RHINO (建築)</a></li>
+                        <li><a href="#">パース</a></li>
+                        <li><a href="#">動画</a></li>
+                    </ul>
+                </li>
                 <li><a href="company.html">会社概要</a></li>
                 <li><a href="contact.html">お問い合わせ</a></li>
             </ul>
@@ -106,5 +165,73 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
     <script src="js/jquery.inview_set.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        // ========================================
+        // SETTING EMAILJS -
+        // ========================================
+        const EMAILJS_CONFIG = {
+            publicKey: "ldN1OA6g0QuQSvVxb", // Account → General
+            serviceId: "service_39tycip", // Email Services
+            templateId: "template_dqfr58r", // Email Templates
+        };
+
+        // EmailJS
+        emailjs.init(EMAILJS_CONFIG.publicKey);
+
+        const form = document.getElementById("contact-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const responseMessage = document.getElementById("response-message");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Kiểm tra cấu hình
+            if (EMAILJS_CONFIG.publicKey === "YOUR_PUBLIC_KEY") {
+                console.log("error emailjs");
+                return;
+            }
+
+            // Disable button và hiển thị loading
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML; // Store original text
+            submitBtn.innerHTML = '<span class="loading"></span>送信中...';
+            responseMessage.style.display = "none";
+
+            try {
+                const formData = {
+                    inquiry_type: form.inquiry_type.value,
+                    from_name: form.from_name.value,
+                    reply_to: form.reply_to.value,
+                    phone: form.phone.value || "",
+                    message: form.message.value,
+                    company_name: form.company_name.value,
+                };
+
+                const response = await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, formData);
+
+                console.log("✅ Email sent successfully:", response);
+
+                showMessage("🎉 メッセージが正常に送信されました！近日中にご返信いたします。", "success");
+                form.reset();
+            } catch (error) {
+                console.error("❌ Error sending email:", error);
+                showMessage("❌ エラーが発生しました！しばらくしてからもう一度お試しください。", "error");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "内容を確認する"; // Restore original text or use fixed
+            }
+        });
+
+        function showMessage(text, type) {
+            responseMessage.textContent = text;
+            responseMessage.className = `message ${type}`;
+            responseMessage.style.display = "block";
+
+            setTimeout(() => {
+                responseMessage.style.display = "none";
+            }, 5000);
+        }
+    </script>
     </body>
 </html>
