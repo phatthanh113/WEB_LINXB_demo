@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://web-linxb-demo.vercel.app/sitemap.xml
+
+# Không cho robot truy cập các file này (nếu có)
+Disallow: /admin/
+Disallow: /private/
